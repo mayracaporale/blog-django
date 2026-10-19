@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 
 from django.shortcuts import render
 from .models import Publicacion
@@ -11,3 +9,6 @@ def inicio(request):
         'publicaciones': publicaciones
     })
 
+
+def acerca(request):
+    return render(request, 'posts/acerca.html')

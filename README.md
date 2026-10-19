@@ -1,69 +1,28 @@
-# Repositorio base de Django
+## Preentrega 8: Sitio web con Django
 
-## Descripción
+El proyecto implementa una primera versión visual de un blog utilizando Django, HTML y CSS.
 
-Este proyecto corresponde a la preentrega de un repositorio base utilizando Django. Su objetivo es preparar la estructura inicial de un proyecto web en Python.
+### Funcionalidades
 
-## Tecnologías utilizadas
+- Página de inicio con mensaje de bienvenida y publicaciones.
+- Página Acerca de con información sobre la autora y el propósito del sitio.
+- Navegación entre páginas mediante URLs de Django.
+- Plantilla base `base.html` reutilizada mediante herencia.
+- Estilos personalizados cargados desde archivos estáticos.
 
-- Python
-- Django
-- SQLite
+### Estructura visual
 
-## Estructura del proyecto
+- `posts/templates/posts/base.html`: estructura general y navegación.
+- `posts/templates/posts/inicio.html`: página principal.
+- `posts/templates/posts/acerca.html`: información sobre el blog.
+- `posts/static/posts/css/estilos.css`: estilos visuales.
 
-- `manage.py`: permite ejecutar comandos de administración de Django.
-- `blog_project/`: contiene la configuración principal del proyecto.
-- `posts/`: aplicación Django del proyecto.
-- `requirements.txt`: contiene las dependencias necesarias.
-- `.gitignore`: indica qué archivos y carpetas no deben subirse al repositorio.
+### Ejecutar el proyecto
 
-## Instalación y ejecución
+Desde la carpeta donde se encuentra `manage.py`, ejecutar:
 
-1. Clonar el repositorio:
+```bash
+python manage.py runserver
+```
 
-   ```bash
-   git clone https://github.com/mayracaporale/blog-django.git
-   ```
-
-2. Ingresar a la carpeta:
-
-   ```bash
-   cd blog-django
-   ```
-
-3. Crear un entorno virtual:
-
-   ```bash
-   python -m venv venv
-   ```
-
-4. Activar el entorno virtual en Windows:
-
-   ```powershell
-   .\venv\Scripts\Activate.ps1
-   ```
-
-5. Instalar las dependencias:
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-6. Ejecutar el servidor de desarrollo:
-
-   ```bash
-   python manage.py runserver
-   ```
-
-7. Abrir en el navegador la dirección:
-
-   `http://127.0.0.1:8000/`
-
-## Configuración
-
-El proyecto está configurado para utilizar el idioma español y la zona horaria de Argentina.
-
-## Repositorio
-
-[GitHub - blog-django](https://github.com/mayracaporale/blog-django)
+Abrir `http://127.0.0.1:8000/` en el navegador.

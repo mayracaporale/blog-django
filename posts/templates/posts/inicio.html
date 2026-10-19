@@ -4,6 +4,9 @@
 {% block titulo %}Inicio | Mi blog{% endblock %}
 
 {% block content %}
+    <h2>Bienvenidos a mi blog</h2>
+    <p>Este es un espacio creado para aprender y practicar el desarrollo web con Python y Django.</p>
+
     {% for publicacion in publicaciones %}
         <article>
             <h2>{{ publicacion.titulo }}</h2>

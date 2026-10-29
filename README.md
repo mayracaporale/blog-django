@@ -1,21 +1,30 @@
 # Blog Django
 
-## Preentrega 8: Sitio web con Django
+Proyecto de blog desarrollado con Python y Django, que integra páginas web con plantillas HTML, estilos CSS y publicaciones almacenadas en una base de datos SQLite.
 
-El proyecto implementa una primera versión visual de un blog utilizando Django, HTML y CSS.
+## Preentrega 8 y Preentrega 9
 
 ### Funcionalidades
 
-- Página de inicio con mensaje de bienvenida y publicaciones.
+- Página de inicio con mensaje de bienvenida y publicaciones dinámicas.
 - Página Acerca de con información sobre la autora y el propósito del sitio.
 - Navegación entre páginas mediante URLs de Django.
 - Plantilla base `base.html` reutilizada mediante herencia.
 - Estilos personalizados cargados desde archivos estáticos.
+- Modelo `Post` para almacenar publicaciones en la base de datos.
+- Administración de publicaciones desde el panel de Django.
+- Estados de publicación: Borrador, Publicado y Archivado.
+- Listado de publicaciones publicadas ordenadas desde la más reciente hasta la más antigua.
 
-### Estructura visual
+### Estructura del proyecto
 
+- `posts/models.py`: definición del modelo `Post`.
+- `posts/admin.py`: registro y configuración del panel de administración.
+- `posts/views.py`: vistas y consultas mediante el ORM de Django.
+- `posts/urls.py`: rutas de la aplicación.
 - `posts/templates/posts/base.html`: estructura general y navegación.
 - `posts/templates/posts/inicio.html`: página principal.
+- `posts/templates/posts/lista_posts.html`: listado de publicaciones.
 - `posts/templates/posts/acerca.html`: información sobre el blog.
 - `posts/static/posts/css/estilos.css`: estilos visuales.
 
@@ -64,13 +73,19 @@ El proyecto implementa una primera versión visual de un blog utilizando Django,
    python manage.py migrate
    ```
 
-7. Iniciar el servidor:
+7. Crear un superusuario para acceder al panel administrativo:
+
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+8. Iniciar el servidor:
 
    ```bash
    python manage.py runserver
    ```
 
-8. Abrir el sitio en el navegador:
+9. Abrir el sitio en el navegador:
 
    http://127.0.0.1:8000/
 
@@ -80,25 +95,11 @@ Para acceder al administrador de Django, ingresar a:
 
 http://127.0.0.1:8000/admin/
 
-Si todavía no existe un superusuario, crearlo con:
+Iniciar sesión con las credenciales del superusuario creado anteriormente. Desde el panel se pueden crear, editar y administrar publicaciones.
 
-```bash
-python manage.py createsuperuser
-```
+## Modelo Post
 
-## Configuración
-
-El proyecto está configurado para utilizar el idioma español y la zona horaria de Argentina.
-
-## Preentrega 9: Modelos y Admin configurados
-
-### Descripción
-
-En esta etapa se configuró el modelo `Post` de Django y su administración desde el panel de administración.
-
-### Modelo Post
-
-El modelo incluye los siguientes campos:
+El modelo `Post` incluye los siguientes campos:
 
 - `titulo`: título de la publicación.
 - `contenido`: contenido de la publicación.
@@ -106,30 +107,36 @@ El modelo incluye los siguientes campos:
 - `fecha_creacion`: fecha y hora de creación generadas automáticamente.
 - `estado`: estado de la publicación, con las opciones Borrador, Publicado y Archivado.
 
-También se implementó el método `__str__()` para mostrar el título de cada publicación.
+El modelo implementa el método `__str__()` para mostrar el título de cada publicación.
 
-### Panel de administración
+## Panel de administración
 
-Se registró el modelo `Post` en Django Admin y se configuraron:
+El modelo `Post` está registrado en Django Admin. Se configuraron:
 
 - Columnas para visualizar título, autor, estado y fecha de creación.
 - Filtros por estado y fecha de creación.
 - Búsqueda por título, contenido y autor.
 
-### Listado de publicaciones
+## Listado de publicaciones
 
-Se configuró el listado para mostrar únicamente publicaciones con estado `publicado`, ordenadas desde la más reciente hasta la más antigua.
+Las vistas consultan los posts almacenados en SQLite mediante el ORM de Django.
 
-### Pruebas realizadas
+El listado de publicaciones muestra únicamente los posts cuyo estado es `publicado`, ordenados por fecha de creación descendente.
 
-- Migraciones aplicadas correctamente.
-- Modelo disponible en el administrador de Django.
-- Creación de tres publicaciones de prueba.
--Verificación de las publicaciones en la página Publicaciones del blog (/posts/)
+Las plantillas utilizan el bucle `{% for post in posts %}` para mostrar dinámicamente el título, contenido, autor y fecha de cada publicación.
 
-### Tecnologías
+## Pruebas realizadas
 
-Python · Django · SQLite · HTML · CSS
+- Comprobación de la configuración del proyecto mediante `python manage.py check`.
+- Migraciones generadas y aplicadas.
+- Modelo disponible y editable desde el panel de administración.
+- Creación de tres publicaciones con estados diferentes.
+- Verificación del listado de publicaciones en `/posts/`.
+- Verificación de la visualización dinámica de publicaciones publicadas en la página de inicio.
+
+## Tecnologías
+
+Python · Django · SQLite · HTML · CSS · Git · GitHub
 
 ## Repositorio
 

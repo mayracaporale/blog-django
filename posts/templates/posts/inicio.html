@@ -7,14 +7,14 @@
     <h2>Bienvenidos a mi blog</h2>
     <p>Este es un espacio creado para aprender y practicar el desarrollo web con Python y Django.</p>
 
-    {% for publicacion in publicaciones %}
+    {% for post in posts %}
         <article>
-            <h2>{{ publicacion.titulo }}</h2>
-            <p>{{ publicacion.contenido }}</p>
-            <p>Autor: {{ publicacion.autor|default:"mayra" }}</p>
-            <p>Fecha: {{ publicacion.fecha_creacion|date:"d/m/Y H:i" }}</p>
+            <h2>{{ post.titulo }}</h2>
+            <p>{{ post.contenido }}</p>
+            <p>Autor: {{ post.autor }}</p>
+            <p>Fecha: {{ post.fecha_creacion|date:"d/m/Y H:i" }}</p>
         </article>
     {% empty %}
-        <p>Todavía no hay publicaciones.</p>
+        <p>Todavía no hay publicaciones publicadas.</p>
     {% endfor %}
 {% endblock %}

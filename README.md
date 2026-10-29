@@ -125,7 +125,7 @@ Se configuró el listado para mostrar únicamente publicaciones con estado `publ
 - Migraciones aplicadas correctamente.
 - Modelo disponible en el administrador de Django.
 - Creación de tres publicaciones de prueba.
-- Verificación de las publicaciones en la página principal del blog.
+-Verificación de las publicaciones en la página Publicaciones del blog (/posts/)
 
 ### Tecnologías
 

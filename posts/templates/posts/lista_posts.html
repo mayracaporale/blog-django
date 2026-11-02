@@ -1,19 +1,44 @@
-
 {% extends 'posts/base.html' %}
 
 {% block titulo %}Publicaciones | Mi blog{% endblock %}
 
 {% block content %}
+
     <h2>Publicaciones del blog</h2>
+
+    <a href="{% url 'crear_post' %}">Crear nueva publicación</a>
 
     {% for post in posts %}
         <article>
+
             <h3>{{ post.titulo }}</h3>
-            <p>{{ post.contenido }}</p>
+
+            {% if post.imagen %}
+                <img src="{{ post.imagen.url }}"
+                     alt="{{ post.titulo }}"
+                     style="max-width: 300px; height: auto;">
+            {% endif %}
+
+            <p>{{ post.contenido|truncatewords:30 }}</p>
+
             <p>Autor: {{ post.autor }}</p>
+
+            <p>Estado: {{ post.estado }}</p>
+
             <p>Fecha: {{ post.fecha_creacion|date:"d/m/Y H:i" }}</p>
+
+            <a href="{% url 'detalle_post' post.pk %}">Ver publicación</a>
+
+            <a href="{% url 'editar_post' post.pk %}">Editar</a>
+
+            <a href="{% url 'eliminar_post' post.pk %}">Eliminar</a>
+
         </article>
+
+        <hr>
+
     {% empty %}
-        <p>Todavía no hay publicaciones publicadas.</p>
+        <p>Todavía no hay publicaciones.</p>
     {% endfor %}
+
 {% endblock %}

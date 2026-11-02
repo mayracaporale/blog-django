@@ -7,6 +7,7 @@ class Post(models.Model):
         ("borrador", "Borrador"),
         ("publicado", "Publicado"),
         ("archivado", "Archivado"),
+    
     ]
 
     titulo = models.CharField(max_length=200)
@@ -17,7 +18,14 @@ class Post(models.Model):
         max_length=20,
         choices=ESTADOS,
         default="borrador",
+        
     )
+
+    imagen = models.ImageField(
+    upload_to='posts/',
+    null=True,
+    blank=True
+)
 
     def __str__(self):
         return self.titulo

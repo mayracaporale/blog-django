@@ -141,3 +141,51 @@ Python · Django · SQLite · HTML · CSS · Git · GitHub
 ## Repositorio
 
 [GitHub - blog-django](https://github.com/mayracaporale/blog-django)
+
+
+## Preentrega 10: CRUD de Posts con Imágenes
+
+En esta etapa se implementó un sistema CRUD para gestionar publicaciones desde la interfaz web del blog desarrollado con Django.
+
+### Funcionalidades
+
+- Listar publicaciones.
+- Ver el detalle de cada publicación.
+- Crear nuevas publicaciones.
+- Editar publicaciones existentes.
+- Eliminar publicaciones con confirmación previa.
+- Subir y visualizar imágenes asociadas a cada post.
+
+### Manejo de imágenes
+
+Se incorporó el campo `ImageField` al modelo `Post`, utilizando Pillow para procesar las imágenes.
+
+Se configuraron:
+- `MEDIA_URL = '/media/'`
+- `MEDIA_ROOT = BASE_DIR / 'media'`
+
+Los formularios utilizan `enctype="multipart/form-data"` y las vistas procesan los archivos mediante `request.FILES`.
+
+Las imágenes se almacenan en la carpeta `media/posts/`.
+
+### Formulario
+
+Se creó `PostForm` utilizando `forms.ModelForm`, vinculado al modelo `Post`, con los campos título, contenido, autor, estado e imagen.
+
+### Ejecución del proyecto
+
+Para ejecutar el proyecto:
+
+```bash
+python manage.py runserver
+```
+
+Luego ingresar a `http://127.0.0.1:8000/`.
+
+### Dependencias
+
+Se incorporó Pillow, incluida en `requirements.txt`.
+
+### Pruebas realizadas
+
+Se verificó la creación, visualización, edición y eliminación de publicaciones, tanto con imágenes como sin ellas. También se comprobó la actualización de imágenes existentes.

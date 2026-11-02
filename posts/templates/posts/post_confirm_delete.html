@@ -1,0 +1,27 @@
+{% extends "posts/base.html" %}
+
+{% block content %}
+
+<div class="contenedor-post">
+
+    <h1>Eliminar publicación</h1>
+
+    <p>¿Estás segura de que querés eliminar esta publicación?</p>
+
+    <h3>{{ post.titulo }}</h3>
+
+    <form method="POST">
+
+        {% csrf_token %}
+
+        <button type="submit">Sí, eliminar publicación</button>
+
+    </form>
+
+    <a href="{% url 'detalle_post' post.pk %}">
+        Cancelar
+    </a>
+
+</div>
+
+{% endblock %}

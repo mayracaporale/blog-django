@@ -1,0 +1,36 @@
+
+{% extends 'posts/base.html' %}
+
+{% block titulo %}Mi perfil{% endblock %}
+
+{% block content %}
+
+<h2>Mi perfil</h2>
+
+{% if perfil.avatar %}
+    <img src="{{ perfil.avatar.url }}"
+         alt="Avatar de {{ perfil.user.username }}"
+         width="150">
+{% else %}
+    <p>Todavía no tenés una imagen de perfil.</p>
+{% endif %}
+
+<h3>{{ perfil.user.username }}</h3>
+
+<p><strong>Email:</strong> {{ perfil.user.email }}</p>
+
+<p><strong>Biografía:</strong></p>
+<p>{{ perfil.biografia|default:"Todavía no agregaste una biografía." }}</p>
+
+{% if perfil.link_web %}
+    <p>
+        <strong>Sitio web:</strong>
+        <a href="{{ perfil.link_web }}" target="_blank">
+            {{ perfil.link_web }}
+        </a>
+    </p>
+{% endif %}
+
+<a href="{% url 'editar_perfil' %}">Editar mi perfil</a>
+
+{% endblock %}

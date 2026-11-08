@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'posts.apps.PostsConfig',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -130,3 +131,7 @@ MAILERS = {
 }
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'lista_posts'
+LOGOUT_REDIRECT_URL = 'lista_posts'
